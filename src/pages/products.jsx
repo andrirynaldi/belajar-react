@@ -3,22 +3,30 @@ import { Fragment, useEffect, useState, useRef } from "react"
 import CardProduct from "../components/Fragments/CardProduct"
 import Button from "../components/elements/Button"
 import { getProducts } from "../services/products.service";
-
-
-
-const email = localStorage.getItem('email');
+import { getUsername } from "../services/auth.service";
 
 
 const ProductsPage = () => {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
     const [products, setProducts] = useState([]);
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem('cart')) || [])
         getProducts((data) => {
             setProducts(data)
         });
+
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setUsername(getUsername(token));
+        } else {
+            window.location.href = '/login'
+        }
     }, [])
 
     useEffect(() => {
@@ -34,7 +42,7 @@ const ProductsPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('isLogin');
-        localStorage.removeItem('email');
+        localStorage.removeItem('token');
         localStorage.removeItem('password');
         window.location.href = '/login';
     }
@@ -63,7 +71,8 @@ const ProductsPage = () => {
 
     return (
         <Fragment>
-            <div className="flex justify-end h-20 bg-blue-600 text-white px-5 items-center  font-bold my-5">{email}
+            <div className="flex justify-end h-20 bg-blue-600 text-white px-5 items-center  font-bold my-5">
+                {username}
                 <Button variant="bg-black ml-5" onClick={handleLogout}>Logout</Button>
             </div>
             <div className="flex justify-center py-5 ">
