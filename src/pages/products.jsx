@@ -72,7 +72,7 @@ const ProductsPage = () => {
                 <div className="w-3/4 flex flex-wrap">
                     {products.length > 0 && products.map((product) => (
                         <CardProduct key={product.id}>
-                            <CardProduct.Header image={product.image}></CardProduct.Header>
+                            <CardProduct.Header image={product.image} id={product.id}></CardProduct.Header>
                             <CardProduct.Body title={product.title}>{product.description}</CardProduct.Body>
                             <CardProduct.Footer id={product.id} handleAddtoCart={handleAddtoCart}>{product.price}</CardProduct.Footer>
                         </CardProduct>
