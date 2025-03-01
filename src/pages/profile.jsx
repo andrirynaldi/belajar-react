@@ -7,7 +7,7 @@ const ProfilePage = () => {
     const {isDarkMode}=useContext(DarkMode)
     const username = useLogin()
     return (
-        <div className={`${isDarkMode && "bg-slate-900 text-white"}`}>
+        <div className={`w-full min-h-screen ${isDarkMode && "bg-slate-900 text-white"}`}>
             <Navbar />
             <h1>Profile</h1>
             <h1>Username : {username }</h1>

@@ -19,8 +19,8 @@ const AuthLayout = (props) => {
                     Wellcome, please enter your details
                 </p>
                 {children}
-                <p className="text-center text-sm mt-5">
-                    {type === 'login' ? "Don't have an acconut? " : "Already have an account? "}
+                <p className="text-center text-sm mt-5 text-slate-500">
+                    {type === 'login' ? "Don't have an account? " : "Already have an account? "}
                     {type === 'login' && (<Link to='/register' className="font-bold text-blue-600">Register</Link>)}
                     {type === 'register' && (<Link to='/login' className="font-bold text-blue-600">Login</Link>)}
                 </p>
