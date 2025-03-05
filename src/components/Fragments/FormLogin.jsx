@@ -7,10 +7,7 @@ const FormLogin = (props) => {
     const usernameRef = useRef(null)
     const handleLogin = (event) => {
         event.preventDefault()
-        // localStorage.setItem('isLogin', true)
-        // localStorage.setItem('email', event.target.email.value)
-        // localStorage.setItem('password', event.target.password.value)
-        // console.log('login success');
+
 
         const data = {
             username: event.target.username.value,
